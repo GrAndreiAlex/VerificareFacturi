@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="994,2077" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="993,2078" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -104,7 +104,7 @@
       <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="572,2012" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="572,2013" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="excelDt" />
       <Variable x:TypeArguments="sd:DataTable" Name="reportDt" />
@@ -125,7 +125,7 @@
         <InArgument x:TypeArguments="x:String">[String.Format("Data\Rezultat_VerificareFacturi_{0}.xlsx",datetime.Now.ToString("dd.MM.yyyy"))]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:CopyFile ContinueOnError="{x:Null}" Destination="[reportPath]" DisplayName="Copy File " sap:VirtualizedContainerService.HintSize="510,154" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="Data\Rezultat_VerificareFacturi_10.10.10.xlsx" />
+    <ui:CopyFile ContinueOnError="{x:Null}" Destination="[reportPath]" DisplayName="Copy File " sap:VirtualizedContainerService.HintSize="510,154" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="Data\Rezultat_VerificareFacturi_{0}.xlsx" />
     <ui:ReadRange AddHeaders="True" DataTable="[reportDt]" DisplayName="Read Report mapping table" sap:VirtualizedContainerService.HintSize="510,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="[reportPath]">
       <ui:ReadRange.Range>
         <InArgument x:TypeArguments="x:String">
@@ -138,13 +138,13 @@
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_excelDt">[excelDt]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[excelDt]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="510,814" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[excelDt]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="510,815" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,628" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,629" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="cuiValue" />
               <Variable x:TypeArguments="x:String" Name="pdfText" />
@@ -155,7 +155,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign DisplayName="Assign cuiValue" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign DisplayName="Assign cuiValue" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[cuiValue]</OutArgument>
               </Assign.To>
@@ -177,18 +177,10 @@
             </ui:InvokeWorkflowFile>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Subprocesses\GenerateReportFile.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Subprocesses\GenerateReportFile.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dictionaryInvoiceData">
-                  <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:String)" ExpressionText="dictionaryInvoiceData" />
-                </InArgument>
-                <InArgument x:TypeArguments="sd:DataRow" x:Key="in_currentRow">
-                  <VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="CurrentRow" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_reportPath">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="reportPath" />
-                </InArgument>
-                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_reportDt">
-                  <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="reportDt" />
-                </InOutArgument>
+                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dictionaryInvoiceData">[dictionaryInvoiceData]</InArgument>
+                <InArgument x:TypeArguments="sd:DataRow" x:Key="in_currentRow">[CurrentRow]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_reportPath">[reportPath]</InArgument>
+                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_reportDt">[reportDt]</InOutArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
           </Sequence>
